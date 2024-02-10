@@ -6,9 +6,16 @@ const userRoute = require("./routes/User");
 const categoryRoute = require("./routes/Category");
 const transactionRoute = require("./routes/Transaction");
 
+const corsOptions = {
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200,
+};
+
 dotenv.config();
 
 const app = express();
+app.use(cors(corsOptions));
+
 const port = 8080;
 const mongoDbUrl = process.env.MONGODB_URI;
 
