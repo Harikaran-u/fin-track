@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import "../styles/sign.css";
 
@@ -10,6 +11,7 @@ const Sign = () => {
   const [warningMsg, setWarningMsg] = useState(
     "Please kindly follow the credential instructions"
   );
+  const navigate = useNavigate();
 
   const usernameRegex = /^[a-zA-Z0-9_]{4,16}$/;
   const passwordRegex =
@@ -66,6 +68,8 @@ const Sign = () => {
       case 200:
         setNotify(true);
         setWarningMsg(message);
+        localStorage.setItem("authToken", JSON.stringify(authToken));
+        navigate("/", { replace: true });
         break;
       case 401:
         setNotify(true);
@@ -101,52 +105,54 @@ const Sign = () => {
   }
 
   return (
-    <form className="sign-form-main-container" onSubmit={submitUserData}>
-      <h1 className="form-head">{isExistingUser ? "Login" : "Register"}</h1>
-      <label htmlFor="usernameInput" className="username-label">
-        Username
-      </label>
-      <input
-        type="text"
-        className="user-input"
-        id="usernameInput"
-        placeholder="Enter username here..."
-        onChange={(e) => setUsername(e.target.value)}
-        value={username}
-        required
-        data-tooltip-id="my-tooltip-multiline"
-        data-tooltip-html="Username must be 4 to 16<br/> characters long and include at<br/> least one capital letter and<br/> one_underscore..."
-      />
-      <label htmlFor="passwordInput" className="username-label">
-        Password
-      </label>
-      <input
-        type="password"
-        className="user-input"
-        id="passwordInput"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-        required
-        placeholder="Enter password here..."
-        data-tooltip-id="my-tooltip-multiline"
-        data-tooltip-html="Password must be 8 to 16<br/> characters long and contain<br/> at least one uppercase letter<br/> and one special character<br/> from the set !@#$%^&*_."
-      />
+    <div className="main-container">
+      <form className="sign-form-main-container" onSubmit={submitUserData}>
+        <h1 className="form-head">{isExistingUser ? "Login" : "Register"}</h1>
+        <label htmlFor="usernameInput" className="username-label">
+          Username
+        </label>
+        <input
+          type="text"
+          className="user-input"
+          id="usernameInput"
+          placeholder="Enter username here..."
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          required
+          data-tooltip-id="my-tooltip-multiline"
+          data-tooltip-html="Username must be 4 to 16<br/> characters long and include at<br/> least one capital letter and<br/> one_underscore..."
+        />
+        <label htmlFor="passwordInput" className="username-label">
+          Password
+        </label>
+        <input
+          type="password"
+          className="user-input"
+          id="passwordInput"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          required
+          placeholder="Enter password here..."
+          data-tooltip-id="my-tooltip-multiline"
+          data-tooltip-html="Password must be 8 to 16<br/> characters long and contain<br/> at least one uppercase letter<br/> and one special character<br/> from the set !@#$%^&*_."
+        />
 
-      <button className="custom-btn submit-btn">Submit</button>
-      {isNotify && <p className="custom-msg warning">{warningMsg}</p>}
-      <div className="custom-row">
-        <p className="custom-msg">
-          {isExistingUser ? "New user?" : "Already a user?"}
-        </p>
-        <span
-          className="custom-msg custom-toggle"
-          onClick={updateSigningProcess}
-        >
-          {isExistingUser ? "Register" : "Login"}
-        </span>
-      </div>
-      <Tooltip id="my-tooltip-multiline" place="right-start" />
-    </form>
+        <button className="custom-btn submit-btn">Submit</button>
+        {isNotify && <p className="custom-msg warning">{warningMsg}</p>}
+        <div className="custom-row">
+          <p className="custom-msg">
+            {isExistingUser ? "New user?" : "Already a user?"}
+          </p>
+          <span
+            className="custom-msg custom-toggle"
+            onClick={updateSigningProcess}
+          >
+            {isExistingUser ? "Register" : "Login"}
+          </span>
+        </div>
+        <Tooltip id="my-tooltip-multiline" place="right-start" />
+      </form>
+    </div>
   );
 };
 

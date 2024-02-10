@@ -1,0 +1,33 @@
+.nav-container {
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #00a9ff;
+}
+
+.nav-head {
+  font-family: "Protest Revolution", "sans-serif";
+  font-size: 28px;
+  color: #191919;
+  cursor: pointer;
+}
+
+.info-details-container {
+  width: 20%;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.info-link {
+  font-size: 14px;
+  font-weight: bold;
+  color: #191919;
+  cursor: pointer;
+}
+
+.log-out-btn {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #faf8ed;
+  padding: 6px;
+  width: 80px;
+}

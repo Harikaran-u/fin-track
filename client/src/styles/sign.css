@@ -1,3 +1,11 @@
+.main-container {
+  background-color: #a1eebd;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sign-form-main-container {
   background-color: #fbf9f1;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
