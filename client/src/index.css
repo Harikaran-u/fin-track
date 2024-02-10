@@ -22,9 +22,8 @@
   align-items: center;
 }
 .custom-msg {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
-  color: #03001c;
 }
 .custom-toggle {
   color: #6d67e4;

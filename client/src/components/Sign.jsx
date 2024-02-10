@@ -1,18 +1,103 @@
 import React, { useState } from "react";
 import { Tooltip } from "react-tooltip";
+import "../styles/sign.css";
 
 const Sign = () => {
   const [isExistingUser, setExistingUser] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isNotify, setNotify] = useState(false);
+  const [warningMsg, setWarningMsg] = useState(
+    "Please kindly follow the credential instructions"
+  );
+
+  const usernameRegex = /^[a-zA-Z0-9_]{4,16}$/;
+  const passwordRegex =
+    /^(?=.*[A-Z])(?=.*[!@#$%^&*_])[a-zA-Z0-9!@#$%^&*_]{8,16}$/;
+
+  async function createNewUser(userData) {
+    const data = JSON.stringify(userData);
+    const registerUrl = "http://localhost:8080/user/register";
+    const configs = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    };
+
+    const response = await fetch(registerUrl, configs);
+    const resdata = await response.json();
+    const message = resdata.message;
+    const statusCode = response.status;
+
+    switch (statusCode) {
+      case 200:
+        setNotify(true);
+        setWarningMsg(message);
+        break;
+      case 409:
+        setNotify(true);
+        setWarningMsg(message);
+        break;
+      default:
+        break;
+    }
+  }
+
+  async function loginUser(userData) {
+    const loginUrl = "http://localhost:8080/user/login";
+    const data = JSON.stringify(userData);
+    const configs = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    };
+    const response = await fetch(loginUrl, configs);
+    const resdata = await response.json();
+
+    const message = resdata.message;
+    const statusCode = response.status;
+    const authToken = resdata.authToken;
+    console.log(authToken);
+    switch (statusCode) {
+      case 200:
+        setNotify(true);
+        setWarningMsg(message);
+        break;
+      case 401:
+        setNotify(true);
+        setWarningMsg(message);
+        break;
+      default:
+        break;
+    }
+  }
 
   function submitUserData(e) {
     e.preventDefault();
-    console.log("Event triggered");
+    setNotify(false);
+
+    const isValidUsername = usernameRegex.test(username);
+    const isValidPassword = passwordRegex.test(password);
+
+    if (isValidUsername && isValidPassword) {
+      const userData = { username, password };
+      isExistingUser ? loginUser(userData) : createNewUser(userData);
+      // console.log("valid data", userData);
+    } else {
+      setNotify(true);
+    }
+    setUsername("");
+    setPassword("");
   }
 
-  function updateSiginingProcess() {
+  function updateSigningProcess() {
     setExistingUser((prev) => !prev);
+    setUsername("");
+    setPassword("");
   }
 
   return (
@@ -48,13 +133,14 @@ const Sign = () => {
       />
 
       <button className="custom-btn submit-btn">Submit</button>
+      {isNotify && <p className="custom-msg warning">{warningMsg}</p>}
       <div className="custom-row">
         <p className="custom-msg">
           {isExistingUser ? "New user?" : "Already a user?"}
         </p>
         <span
           className="custom-msg custom-toggle"
-          onClick={updateSiginingProcess}
+          onClick={updateSigningProcess}
         >
           {isExistingUser ? "Register" : "Login"}
         </span>
