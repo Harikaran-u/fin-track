@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-btn {
+  cursor: pointer;
+  outline: none;
+  padding: 4px;
+  border-radius: 4px;
+  color: #0f1035;
+  border: transparent;
+  height: 36px;
+}
+.custom-row {
+  display: flex;
+  align-items: center;
+}
+.custom-msg {
+  font-size: 14px;
+  font-weight: bold;
+  color: #03001c;
+}
+.custom-toggle {
+  color: #6d67e4;
+  margin-left: 4px;
+  cursor: pointer;
+}
