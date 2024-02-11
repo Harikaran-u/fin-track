@@ -21,12 +21,20 @@
   display: flex;
   align-items: center;
 }
+.custom-col {
+  display: flex;
+  flex-direction: column;
+}
 .custom-msg {
   font-size: 12px;
   font-weight: bold;
 }
 .custom-toggle {
-  color: #6d67e4;
+  color: #c70039;
   margin-left: 4px;
   cursor: pointer;
+}
+
+.custom-link {
+  text-decoration: none;
 }
