@@ -7,7 +7,7 @@ const categoryRoute = require("./routes/Category");
 const transactionRoute = require("./routes/Transaction");
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://hkfintrack.vercel.app",
   optionsSuccessStatus: 200,
 };
 
