@@ -21,7 +21,6 @@ const mongoDbUrl = process.env.MONGODB_URI;
 // routes direction
 
 app.use("/user", userRoute);
-app.use("/category", categoryRoute);
 app.use("/transaction", transactionRoute);
 
 //Connecting to MongoDb
