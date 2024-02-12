@@ -1,9 +1,10 @@
 .nav-container {
   justify-content: space-between;
   padding: 20px;
-  background-color: #a1eebd89;
+  background-color: #836fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   backdrop-filter: blur(10px);
+  position: relative;
 }
 
 .nav-head {
@@ -14,7 +15,7 @@
 }
 
 .info-details-container {
-  width: 30%;
+  width: 340px;
   justify-content: space-between;
   list-style-type: none;
 }
@@ -29,7 +30,7 @@
 .nav-btn {
   font-size: 14px;
   font-weight: bold;
-  background-color: #f9b572;
+  background-color: #fefbf6;
   padding: 6px !important;
   width: 120px;
 }
@@ -40,7 +41,65 @@
 .log-out-btn {
   font-size: 14px;
   font-weight: bold;
-  background-color: #d67bff;
+  background-color: #fefbf6;
   padding: 6px !important;
   width: 80px;
+}
+.info-details-sm-container {
+  display: none;
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* media layouts  */
+
+/* mobile devices upto 576px width */
+
+@media screen and (max-width: 576px) {
+  .info-details-sm-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #fefbf6;
+    border-radius: 4px;
+    right: 10px;
+    top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 6px;
+  }
+  .info-details-container {
+    display: none !important;
+  }
+  .nav-btn {
+    width: 120px;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px !important;
+    background-color: transparent;
+  }
+  .nav-btn:hover {
+    background-color: #836fff;
+  }
+  .nav-btn-icon {
+    font-size: 10px;
+  }
+  .log-out-btn {
+    background-color: transparent;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .menu-btn {
+    display: block;
+    background-color: transparent;
+    border: 0;
+    font-size: 25px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+  }
 }

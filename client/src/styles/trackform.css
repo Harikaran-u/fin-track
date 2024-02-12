@@ -4,20 +4,19 @@
   background-image: url("moneyManage.png");
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .track-form-container {
   width: 400px;
-  height: 400px;
-  background-color: #0cdbff6c;
+  background-color: #fefbf6ce;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  left: 35%;
+  align-self: center;
   margin-top: 50px;
 }
 
@@ -79,4 +78,32 @@
   font-weight: bold;
   background-color: transparent;
   border: 2px solid #191919 !important;
+  margin-top: 10px;
+}
+.track-submit-btn:hover {
+  background-color: #191919;
+  color: #fefbf6 !important;
+}
+.track-info {
+  font-size: 12px;
+  font-weight: bold;
+  color: #008170;
+}
+
+/* media layouts */
+
+/* fold devices width upto 296px */
+
+@media screen and (max-width: 296px) {
+  .track-form-container {
+    width: 240px;
+  }
+}
+
+/* mobile devices upto 576px width */
+
+@media screen and (min-width: 298px) and (max-width: 576px) {
+  .track-form-container {
+    width: 280px;
+  }
 }

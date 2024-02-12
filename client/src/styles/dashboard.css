@@ -1,0 +1,158 @@
+.table-title-head {
+  margin-left: 20px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.transactions-container {
+  width: 100%;
+  height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+.transactions-container::-webkit-scrollbar {
+  display: none;
+}
+.main-table {
+  border-collapse: collapse;
+  margin-left: 20px;
+}
+
+.t-head {
+  background-color: #fec260;
+  border: 1px solid #526d82;
+  padding: 8px;
+  text-align: left;
+}
+
+.t-data {
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #526d82;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+.income {
+  color: #0d9276 !important;
+}
+.expense {
+  color: #af0404 !important;
+}
+
+tr:hover {
+  background-color: #d4adfc;
+}
+
+.table-data-container {
+  justify-content: space-between;
+}
+
+.balance-head {
+  font-size: 21px;
+  font-weight: bold;
+  color: #0f1035;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.balance-value {
+  font-size: 36px;
+  color: #0d9276;
+}
+
+.loader {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.monthly-table-head {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.monthly-summary-container {
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+.summary-table {
+  margin-left: 0 !important;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+.rs-symbol {
+  font-size: 25px;
+}
+.not-available {
+  background-image: url("notfound.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 90vh;
+}
+
+/* media layouts */
+
+/* mobile devices upto 576px */
+
+@media screen and (max-width: 576px) {
+  .custom-row {
+    align-items: flex-start;
+  }
+  .table-data-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .transactions-container {
+    width: 100%;
+    height: 280px;
+  }
+  .main-table {
+    margin-left: 6px;
+  }
+  .table-title-head {
+    margin-left: 6px;
+  }
+  .balance-head {
+    margin-left: 6px;
+    font-size: 16px;
+  }
+  .balance-value {
+    font-size: 18px;
+  }
+  .monthly-summary-container {
+    margin-left: 6px;
+    margin-top: 20px;
+  }
+  .t-head {
+    font-size: 12px;
+    padding: 4px;
+  }
+  .t-data {
+    font-size: 8px;
+    padding: 4px;
+  }
+  .table-title-head {
+    font-size: 16px;
+  }
+  .monthly-table-head {
+    font-size: 16px;
+  }
+  .rs-symbol {
+    font-size: 12px;
+  }
+}
+
+/* medium devices from 577px to 1024px */
+
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+  .table-data-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .monthly-summary-container {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+}

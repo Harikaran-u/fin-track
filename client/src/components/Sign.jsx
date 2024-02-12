@@ -70,13 +70,18 @@ const Sign = () => {
     const message = resdata.message;
     const statusCode = response.status;
     const authToken = resdata.authToken;
-    console.log(authToken);
+    const userId = resdata.userId;
     switch (statusCode) {
       case 200:
         setNotify(true);
         setWarningMsg(message);
         localStorage.setItem("authToken", JSON.stringify(authToken));
+        localStorage.setItem("userId", userId);
         navigate("/", { replace: true });
+        break;
+      case 400:
+        setNotify(true);
+        setWarningMsg(message);
         break;
       case 401:
         setNotify(true);

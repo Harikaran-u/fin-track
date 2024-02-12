@@ -9,11 +9,6 @@
   align-items: center;
   justify-content: center;
 }
-/* .login-illustration-img {
-  width: 50%;
-  height: 400px;
-  border-radius: 20px;
-} */
 
 .sign-form-main-container {
   background-color: #effffd75;
@@ -22,7 +17,6 @@
   border-radius: 20px;
   padding: 12px;
   width: 400px;
-  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,4 +61,20 @@
 
 .warning {
   color: #ff6868;
+}
+
+/* media layouts */
+
+/* fold devices */
+
+@media screen and (max-width: 296px) {
+  .sign-form-main-container {
+    width: 260px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .sign-form-main-container {
+    width: 280px;
+  }
 }

@@ -1,0 +1,105 @@
+.modify-main-container {
+  background-image: url("savingsBg.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.modify-form-container {
+  width: 400px;
+  padding: 20px;
+  background-color: #19191984;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  backdrop-filter: blur(10px);
+  align-self: center;
+  margin-top: 50px;
+}
+.modify-head {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #191919;
+  margin-bottom: 20px;
+}
+
+.drop-down-list-modify {
+  width: 100%;
+  height: 36px;
+  border: 2px solid #03001c;
+  background-color: #eeeded7e;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 4px;
+  margin-top: 4px;
+  outline: none;
+}
+.drop-down-list-modify option {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.modify-label {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #191919;
+}
+.radio-input-modify {
+  margin-right: 4px;
+  transform: scale(1.2);
+}
+.type-container-modify {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.modify-btn-container {
+  justify-content: space-between;
+}
+
+.modify-submit-btn {
+  width: 80px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 2px solid #191919 !important;
+  color: #191919 !important;
+}
+.modify-submit-btn:hover {
+  background-color: #191919;
+  color: #fefbf6 !important;
+}
+
+.modify-info {
+  color: #ffed00;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* media layouts */
+
+/* mobile devices upto 576px */
+
+@media screen and (min-width: 297px) and (max-width: 576px) {
+  .modify-form-container {
+    width: 300px;
+    backdrop-filter: none;
+    background-color: #fefbf6a2;
+  }
+}
+
+/* fold devices */
+
+@media screen and (max-width: 296px) {
+  .modify-form-container {
+    width: 260px;
+    backdrop-filter: none;
+    background-color: #fefbf6a2;
+  }
+}

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import Navbar from "./Navbar";
 import "../styles/trackform.css";
@@ -21,15 +22,71 @@ const categoryList = [
   { id: 14, name: "Other Expenses" },
 ];
 
+const transactionUrl = "http://localhost:8080/transaction/new";
+
 const TrackForm = () => {
-  const [selectedCategory, setCategory] = useState(categoryList[0].name);
+  const [category, setCategory] = useState(categoryList[0].name);
   const [type, setType] = useState("");
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
+  const [isCreated, setCreated] = useState(false);
+  const [info, setInfo] = useState("");
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
 
-  function handleFinanceData(e) {
+  useEffect(() => {
+    const authToken = localStorage.getItem("authToken");
+    if (!authToken) {
+      navigate("/access", { replace: true });
+    }
+  }, []);
+
+  async function handleFinanceData(e) {
     e.preventDefault();
+
+    const data = {
+      userId: userId,
+      categoryName: category,
+      transactionType: type,
+      amount: amount,
+      date: date,
+      description: description,
+    };
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    try {
+      const response = await fetch(transactionUrl, configObj);
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        const inteval = setInterval(() => setCreated(true), 3000);
+        setTimeout(() => {
+          clearInterval(inteval);
+          setCreated(false);
+        }, 3000);
+        setInfo(data.message);
+      } else {
+        const inteval = setInterval(() => setCreated(true), 3000);
+        setTimeout(() => {
+          clearInterval(inteval);
+          setCreated(false);
+        }, 3000);
+        setInfo(data.message);
+      }
+      setType("Income");
+      setAmount(0);
+      setDescription("");
+      setDate("");
+      setCategory(categoryList[0].name);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -41,13 +98,14 @@ const TrackForm = () => {
           Select a category
         </label>
         <select
-          value={selectedCategory}
+          value={category}
           onChange={(e) => setCategory(e.target.value)}
           placeholder="select a category"
           className="drop-down-list"
           id="category"
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Select a category"
+          required
         >
           {categoryList.map((eachCategory) => (
             <option key={eachCategory.id}>{eachCategory.name}</option>
@@ -66,6 +124,7 @@ const TrackForm = () => {
             id="income"
             className="radio-input"
             onChange={(e) => setType(e.target.value)}
+            required
           />
           <label className="track-label" htmlFor="income">
             Income
@@ -74,13 +133,14 @@ const TrackForm = () => {
           <input
             type="radio"
             name="typeGroup"
-            value="Expences"
-            id="expences"
+            value="Expenses"
+            id="expenses"
             className="radio-input"
             onChange={(e) => setType(e.target.value)}
+            required
           />
-          <label className="track-label" htmlFor="expences">
-            Expences
+          <label className="track-label" htmlFor="expenses">
+            Expenses
           </label>
         </div>
         <label className="track-label" htmlFor="amountInput">
@@ -95,6 +155,7 @@ const TrackForm = () => {
           onChange={(e) => setAmount(parseInt(e.target.value))}
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Enter a amount"
+          required
         />
         <label className="track-label" htmlFor="dateInput">
           Date
@@ -108,6 +169,7 @@ const TrackForm = () => {
           onChange={(e) => setDate(e.target.value)}
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Select a date"
+          required
         />
         <label className="track-label" htmlFor="descriptionInput">
           Description
@@ -122,7 +184,9 @@ const TrackForm = () => {
           onChange={(e) => setDescription(e.target.value)}
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Short & Sweet"
+          required
         />
+        {isCreated && <p className="track-info">{info}</p>}
         <button
           type="submit"
           className="custom-btn track-submit-btn"
@@ -131,6 +195,7 @@ const TrackForm = () => {
         >
           Submit
         </button>
+
         <Tooltip id="my-tooltip" place="right-start" />
       </form>
     </div>
