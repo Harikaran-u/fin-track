@@ -22,7 +22,7 @@ const categoryList = [
   { id: 14, name: "Other Expenses" },
 ];
 
-const transactionUrl = "http://localhost:8080/transaction/new";
+const transactionUrl = "https://fin-track-server.onrender.com/transaction/new";
 
 const TrackForm = () => {
   const [category, setCategory] = useState(categoryList[0].name);

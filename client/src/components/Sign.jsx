@@ -26,7 +26,7 @@ const Sign = () => {
 
   async function createNewUser(userData) {
     const data = JSON.stringify(userData);
-    const registerUrl = "http://localhost:8080/user/register";
+    const registerUrl = "https://fin-track-server.onrender.com/user/register";
     const configs = {
       method: "POST",
       headers: {

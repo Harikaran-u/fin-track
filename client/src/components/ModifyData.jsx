@@ -58,7 +58,7 @@ const ModifyData = () => {
   async function submitModifiedData(e) {
     e.preventDefault();
 
-    const modifyUrl = `http://localhost:8080/transaction/update/${userId}`;
+    const modifyUrl = `https://fin-track-server.onrender.com/transaction/update/${userId}`;
     const transData = {
       transId: data._id,
       categoryName: category,

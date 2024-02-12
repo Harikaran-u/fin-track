@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   async function getAllTransactions() {
     const userId = localStorage.getItem("userId");
-    const allTransUrl = `http://localhost:8080/transaction/all/${userId}`;
+    const allTransUrl = `https://fin-track-server.onrender.com/transaction/all/${userId}`;
 
     try {
       const response = await fetch(allTransUrl);
