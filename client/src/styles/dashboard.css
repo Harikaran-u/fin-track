@@ -85,7 +85,7 @@ tr:hover {
   font-size: 25px;
 }
 .not-available {
-  background-image: url("notfound.png");
+  background-image: url("https://res.cloudinary.com/diuvnny8c/image/upload/v1707743923/notfound_mdwcxu.png");
   background-position: center;
   background-size: cover;
   min-height: 90vh;
