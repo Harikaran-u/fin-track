@@ -3,7 +3,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/User");
-const categoryRoute = require("./routes/Category");
 const transactionRoute = require("./routes/Transaction");
 
 const corsOptions = {
