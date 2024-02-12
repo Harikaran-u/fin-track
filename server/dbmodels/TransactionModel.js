@@ -7,8 +7,12 @@ const TransactionSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
     },
-    categoryId: {
-      type: Schema.Types.ObjectId,
+    categoryName: {
+      type: String,
+      required: true,
+    },
+    transactionType: {
+      type: String,
       required: true,
     },
     amount: {

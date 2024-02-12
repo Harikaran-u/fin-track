@@ -61,9 +61,10 @@ router.post("/login", async (req, res) => {
       if (isValidPwd) {
         const payload = { username, password };
         const jwtToken = jwt.sign(payload, secret_key);
+        const userId = validUser._id;
         res
           .status(200)
-          .json({ message: "Login successful..", authToken: jwtToken });
+          .json({ message: "Login successful..", authToken: jwtToken, userId });
       } else {
         res.status(401).json({ message: "Invalid password" });
       }

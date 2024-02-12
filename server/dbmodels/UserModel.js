@@ -16,6 +16,9 @@ const UserSchema = new Schema(
       min: 8,
       max: 16,
     },
+    transactions: {
+      type: Array,
+    },
   },
   { timestamps: true }
 );
