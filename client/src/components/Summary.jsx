@@ -19,7 +19,7 @@ const Summary = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    const summaryUrl = `https://fin-track-server.onrender.com/summary/${userId}`;
+    const summaryUrl = `https://fin-track-server.onrender.com/transaction/summary/${userId}`;
     getSummary(summaryUrl);
   });
 
