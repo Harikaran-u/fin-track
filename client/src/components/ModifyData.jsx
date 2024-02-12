@@ -79,20 +79,11 @@ const ModifyData = () => {
       const response = await fetch(modifyUrl, config);
       const data = await response.json();
       if (response.ok) {
-        console.log("message");
-        const interval = setTimeout(() => setInfo(true), 3000);
+        setInfo(true);
         setMessage(data.message);
-        setTimeout(() => {
-          clearInterval(interval);
-          setInfo(false);
-        }, 3000);
       } else {
-        const interval = setTimeout(() => setInfo(true), 3000);
+        setInfo(true);
         setMessage(data.message);
-        setTimeout(() => {
-          clearInterval(interval);
-          setInfo(false);
-        }, 3000);
       }
     } catch (error) {
       console.log(data.message);
