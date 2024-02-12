@@ -99,7 +99,7 @@ const ModifyData = () => {
   }
 
   async function deleteTransaction() {
-    const deleteUrl = `http://localhost:8080/transaction/delete/${userId}?transId=${data._id}`;
+    const deleteUrl = `https://fin-track-server.onrender.com/transaction/delete/${userId}?transId=${data._id}`;
 
     try {
       const config = {
