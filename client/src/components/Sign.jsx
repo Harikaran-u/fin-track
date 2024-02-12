@@ -55,7 +55,7 @@ const Sign = () => {
   }
 
   async function loginUser(userData) {
-    const loginUrl = "http://localhost:8080/user/login";
+    const loginUrl = "https://fin-track-server.onrender.com/user/login";
     const data = JSON.stringify(userData);
     const configs = {
       method: "POST",
